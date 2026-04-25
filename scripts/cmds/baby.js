@@ -51,7 +51,7 @@ module.exports.onStart = async ({ api, event, args, usersData }) => {
 
     try {
         if (!args[0]) {
-            const ran = ["Bolo baby 👀", "Type baby help", "Kichu bolooo🤧", "Sunno ki?😌""Curi kore abar aisos?🐸""Tui single tai amar kache asos?😿""Bol gorib ki bolbi🐸""Tore gonar time na😎""Vag ente khali daka daki koros ken?😾"];
+            const ran = ["Bolo baby 👀", "Type baby help", "Kichu bolooo🤧", "Sunno ki?😌""Curi kore abar aisos?🐸""Tui single tai amar kache asos?😿""Bol gorib ki bolbi🐸""Tore gonar time na😎""Vag ente khali daka daki koros ken?😾";]
             return api.sendMessage(ran[Math.floor(Math.random() * ran.length)], event.threadID, event.messageID);
         }
         if (args[0] === 'remove') {
