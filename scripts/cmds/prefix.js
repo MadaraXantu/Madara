@@ -4,7 +4,7 @@ const moment = require("moment-timezone");
 const getStreamFromURL = global.utils.getStreamFromURL;
 
 const gifList = [
-	"https://files.catbox.moe/20q0dn.gif",
+	"https://files.catbox.moe/ml5qu7.webp",
    "https://i.ibb.co.com/ZRjQLT40/lv-0-20260122182327-2.gif"
 ];
 
@@ -112,7 +112,7 @@ module.exports = {
 		const time = moment().tz("Asia/Dhaka").format("hh:mm A");
 		const date = moment().tz("Asia/Dhaka").format("DD MMM YYYY");
 
-		const owner = global.GoatBot.config.adminName || "Xalman";
+		const owner = global.GoatBot.config.adminName || "Antu";
 
 		return message.reply({
 			body:
@@ -124,7 +124,7 @@ module.exports = {
 ┃ 📅 Date   : ${date}
 ┃ 👑 Owner  : ${owner}
 ┃ ⚡ Status : ONLINE
-╰━━━〔 ✨ Powered by Xalman 〕━━━╯`,
+╰━━━〔 ✨ Powered by Antu 〕━━━╯`,
 			attachment: await getStreamFromURL(gif)
 		});
 	}
