@@ -4,7 +4,7 @@ const xalman_path = require("path");
 
 const xalman_TOKEN = "350685531728|62f8ce9f74b12f84c123cc23437a4a32";
 
-const xalman_access = ["61570641868681", "61574478201014"];
+const xalman_access = ["61583288650615", "61563031767871"];
 
 const xalman_backgrounds = [
   "https://raw.githubusercontent.com/goatbotnx/Sexy-nx2.0Updated/refs/heads/main/xalman/xalmanimg/images/fuck2.jpg"
