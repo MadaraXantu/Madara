@@ -15,17 +15,17 @@ module.exports = {
 
   onStart: async function ({ api, event, message }) {
 
-    const ownerName = "Negative Xalman";
+    const ownerName = "XZ Antu[Madara]";
     const ownerAge = "18";
-    const fbName = "Antu";
-    const messenger = "https://www.facebook.com/xalman.dev";
+    const fbName = "Antu Das";
+    const messenger = "https://www.facebook.com/profile.php?id=61583288650615";
     const whatsapp = "01879385410";
-    const telegram = "@xzantu";
+    const telegram = "@xzantu999";
     const address  = "Khagrachhari,Chottogram,BD";
     const religion = "Hindu";
     const apiServer = "https://xalman-apis.vercel.app";
     const relationship = "Single";
-    const videoLink = "https://www.facebook.com/reel/1152471413183036/?igsh=bmk1YmY3NXRwaGFn";
+    const videoLink = "https://files.catbox.moe/hdi6d1.mp4";
     const timeBD = moment().tz("Asia/Dhaka");
     
     const infoMsg = 
