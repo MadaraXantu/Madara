@@ -39,7 +39,7 @@ module.exports = {
 			case "add":
 			case "-a": {
 				if (senderID !== OWNER)
-					return message.reply("❌ | Only NX can add operator.");
+					return message.reply("❌ | Only Antu can add operator.");
 
 				let uids = [];
 				if (event.type === "message_reply") {
@@ -88,7 +88,7 @@ module.exports = {
 			case "remove":
 			case "-r": {
 				if (senderID !== OWNER)
-					return message.reply("❌ | Only NX can remove operator.");
+					return message.reply("❌ | Tui gorib tai tui parbi na😹");
 
 				let uids = [];
 
