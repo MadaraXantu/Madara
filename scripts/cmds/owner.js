@@ -17,15 +17,15 @@ module.exports = {
 
     const ownerName = "Negative Xalman";
     const ownerAge = "18";
-    const fbName = "Maybe NX";
+    const fbName = "Antu";
     const messenger = "https://www.facebook.com/xalman.dev";
-    const whatsapp = "https://wa.me/qr/2SDY4QQTMJR7H1";
-    const telegram = "@Negativexalman";
-    const address = "Narsingdi, Dhaka, Bangladesh";
-    const religion = "Islam";
+    const whatsapp = "01879385410";
+    const telegram = "@xzantu";
+    const address  = "Khagrachhari,Chottogram,BD";
+    const religion = "Hindu";
     const apiServer = "https://xalman-apis.vercel.app";
     const relationship = "Single";
-    const videoLink = "https://files.catbox.moe/vd43nx.mp4";
+    const videoLink = "https://www.facebook.com/reel/1152471413183036/?igsh=bmk1YmY3NXRwaGFn";
     const timeBD = moment().tz("Asia/Dhaka");
     
     const infoMsg = 
