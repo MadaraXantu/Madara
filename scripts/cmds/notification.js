@@ -43,7 +43,7 @@ module.exports = {
       }
     }
 
-    const owner = "negative xalman (nx)";
+    const owner = "XZ Antu [M𝚊𝚍𝚊𝚛𝚊]";
     const formSend = {
       body: `╭━━━〔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗧𝗜𝗢𝗡 〕━━━╮\n┃ 𝗢𝗪𝗡𝗘𝗥: ${owner}\n┃ 𝗔𝗗𝗠𝗜𝗡: ${senderName}\n╰━━━━━━━━━━━━━━━━━━━━╯\n\n🕒 𝗧𝗶𝗺𝗲: ${timeString} | ${dateString}\n\n📝 𝗠𝗲𝘀𝘀𝗮𝗴𝗲:\n───────────────────\n${msgText || "(Media Attachment)"}\n───────────────────\n\n📢 `,
       attachment: streamAttachments
