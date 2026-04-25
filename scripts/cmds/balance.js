@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const axios = require('axios');
 
-const nx_210 = "xalman";
+const xz_999 = "Antu";
 
 module.exports = {
     config: {
@@ -92,7 +92,7 @@ module.exports = {
             await usersData.set(senderID, { money: (currentMoney - amount).toString() });
             await usersData.set(targetUID, { money: (Number(receiverData.money || 0) + amount).toString() });
 
-            return message.reply(`✅ Transferred $${formatBalance(amount)} to ${receiverData.name}\nSystem Provider: ${nx_210}`);
+            return message.reply(`✅ Transferred $${formatBalance(amount)} to ${receiverData.name}\nSystem Provider: ${xz_999}`);
         }
 
         const createUniqueCard = async (name, balance, uid) => {
