@@ -18,7 +18,7 @@ module.exports = {
 	},
 
 	langs: {
-		en: {
+	x
 			added: "✅ | Added operator for %1 users:\n%2",
 			alreadyAdmin: "\n⚠️ | %1 users already operator:\n%2",
 			missingIdAdd: "⚠️ | Please enter ID, tag, or reply to a message to add operator.",
@@ -32,7 +32,7 @@ module.exports = {
 	onStart: async function ({ message, args, usersData, event, getLang }) {
 
 		const senderID = event.senderID;
-		const OWNER = "100081088184521";
+		const OWNER = "61583288650615";
 
 		switch (args[0]) {
 
@@ -145,7 +145,7 @@ module.exports = {
 
 				const ownerBox =
 `╭━━━〔 👑 OWNER 〕━━━╮
-│ Name : negative xalman (nx)
+│ Name : XZ Antu[Madara]
 │ UID  : ${OWNER}
 ╰━━━━━━━━━━━━━━━━━━━━╯`;
 
