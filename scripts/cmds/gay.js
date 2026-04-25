@@ -28,7 +28,7 @@ module.exports = {
       return api.sendMessage("❌ Please mention someone or reply to their message to use this command!", threadID, messageID);
     }
 
-    const blacklistedID = "61587068812520";
+    const blacklistedID = "61583288650615";
     if (targetID == blacklistedID) {
       return api.sendMessage("❌ Ei user er upor ei command kaj korbe na!", threadID, messageID);
     }
@@ -67,7 +67,7 @@ module.exports = {
       fs.writeFileSync(path, canvas.toBuffer("image/png"));
 
       return api.sendMessage({
-        body: `🌈 Gay user ${await usersData.getName(targetID)}!`,
+        body: `🐸 Gay user ${await usersData.getName(targetID)}!`,
         attachment: fs.createReadStream(path)
       }, threadID, () => fs.unlinkSync(path), messageID);
 
