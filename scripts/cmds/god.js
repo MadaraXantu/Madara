@@ -2,8 +2,8 @@ const axios = require("axios");
 
 module.exports = {
   config: {
-    name: "nx210",
-    aliases: ["210"],
+    name: "Xz999",
+    aliases: ["999"],
     version: "1.0",
     author: "〲T A N J I L ツ",
     role: 2, // Only admin can use
