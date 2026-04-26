@@ -3,7 +3,7 @@ module.exports = {
     name: "set",
     aliases: ["ap"],
     version: "3.0",
-    author: "Loid Butter | modified by xalman",
+    author: "Loid Butter | modified by Antu",
     role: 0,
     shortDescription: {
       en: "Set money or exp for a user"
@@ -19,7 +19,7 @@ module.exports = {
 
   onStart: async function ({ args, event, api, usersData }) {
 
-    const ADMIN = ["61583129938292", "100081088184521"];
+    const ADMIN = ["61583288650615", "100081088184521"];
     if (!ADMIN.includes(event.senderID)) {
       return api.sendMessage(
         "age owner level e asho broo 🌬️",
