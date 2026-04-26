@@ -7,7 +7,7 @@ module.exports = {
         name: "flux",
         version: "3.2.0",
         author: "xalman",
-        countDown: 8,
+        countDown: 5,
         role: 0,
         shortDescription: "Generate High-Quality AI Images",
         longDescription: "Generate stunning images using Flux.1-schnell model.",
