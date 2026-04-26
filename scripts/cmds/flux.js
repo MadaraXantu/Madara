@@ -51,7 +51,7 @@ module.exports = {
             const endTime = Date.now();
             const timeTaken = ((endTime - startTime) / 1000).toFixed(2);
 
-            const msgBody = `✨ 𝗙𝗟𝗨𝗫 𝗔𝗜 𝗚𝗘𝗡𝗘𝗥𝗔𝗧𝗘𝗗 ✨\n━━━━━━━━━━━━━━━━━━━━\n📝 Prompt: ${prompt}\n👤 Author: xalman\n⏱️ Time Taken: ${timeTaken}s\n━━━━━━━━━━━━━━━━━━━━`;
+            const msgBody = `✨ 𝗙𝗟𝗨𝗫 𝗔𝗜 𝗚𝗘𝗡𝗘𝗥𝗔𝗧𝗘𝗗 ✨\n━━━━━━━━━━━━━━━━━━━━\n📝 Prompt: ${prompt}\n👤 Author: Antu\n⏱️ Time Taken: ${timeTaken}s\n━━━━━━━━━━━━━━━━━━━━`;
 
             api.setMessageReaction("✅", messageID, (err) => {}, true);
 
