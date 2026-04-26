@@ -25,7 +25,7 @@ module.exports = {
     const religion = "Hindu";
     const apiServer = "https://xalman-apis.vercel.app";
     const relationship = "Single";
-    const videoLink = "https://files.catbox.moe/hdi6d1.mp4";
+    const videoLink = "https://files.catbox.moe/shywjw.mp4";
     const timeBD = moment().tz("Asia/Dhaka");
     
     const infoMsg = 
