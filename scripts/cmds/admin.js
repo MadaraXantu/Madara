@@ -1,4 +1,4 @@
-const { config } = global.GoatBot;
+pconst { config } = global.GoatBot;
 const { writeFileSync } = require("fs-extra");
 
 module.exports = {
