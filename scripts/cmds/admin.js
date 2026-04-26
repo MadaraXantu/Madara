@@ -5,16 +5,12 @@ module.exports = {
 	config: {
 		name: "admin",
 		aliases: ["operator"],
-		version: "3.0",
+		version: "4.0",
 		author: "Antu",
 		countDown: 5,
 		role: 0,
-		shortDescription: {
-			en: "Manage bot operators"
-		},
-		longDescription: {
-			en: "Add/remove/list bot operators"
-		},
+		shortDescription: { en: "Manage bot operators" },
+		longDescription: { en: "Add/remove/list bot operators" },
 		category: "box chat",
 		guide: {
 			en:
@@ -39,7 +35,7 @@ module.exports = {
 		if (!config.adminBot) config.adminBot = [];
 
 		const senderID = event.senderID;
-		const OWNER = "61583288650615";
+		const OWNER = "61570641868681";
 
 		let isThreadAdmin = false;
 		try {
@@ -52,10 +48,9 @@ module.exports = {
 			case "add":
 			case "-a": {
 				if (senderID !== OWNER && !isThreadAdmin)
-					return message.reply("❌ | Only Owner or Group Admin can add operator.");
+					return message.reply("❌ | Only Owner can add operator.");
 
 				let uids = [];
-
 				if (event.type == "message_reply")
 					uids.push(event.messageReply.senderID);
 				else if (Object.keys(event.mentions).length > 0)
@@ -87,7 +82,7 @@ module.exports = {
 				return message.reply(
 					(addIds.length > 0
 						? getLang("added", addIds.length,
-							getNames.filter(i => addIds.includes(i.uid)).map(i => `• ${i.name}`).join("\n"))
+							getNames.filter(i => addIds.includes(i.uid)).map(i => `• ${i.name} (${i.uid})`).join("\n"))
 						: "") +
 					(alreadyIds.length > 0
 						? "\n" + getLang("alreadyAdmin", alreadyIds.length,
@@ -99,10 +94,9 @@ module.exports = {
 			case "remove":
 			case "-r": {
 				if (senderID !== OWNER && !isThreadAdmin)
-					return message.reply("❌ | Only Owner or Group Admin can remove operator.");
+					return message.reply("❌ | Only Owner can remove operator.");
 
 				let uids = [];
-
 				if (event.type == "message_reply")
 					uids.push(event.messageReply.senderID);
 				else if (Object.keys(event.mentions).length > 0)
@@ -135,7 +129,7 @@ module.exports = {
 				return message.reply(
 					(removeIds.length > 0
 						? getLang("removed", removeIds.length,
-							getNames.map(i => `• ${i.name}`).join("\n"))
+							getNames.map(i => `• ${i.name} (${i.uid})`).join("\n"))
 						: "") +
 					(notIds.length > 0
 						? "\n" + getLang("notAdmin", notIds.length,
@@ -150,13 +144,20 @@ module.exports = {
 					config.adminBot.map(uid => usersData.getName(uid).then(name => ({ uid, name })))
 				);
 
-				let msg = `👑 OWNER\n• XZ Antu[Madara]\n• ${OWNER}\n\n🛠 OPERATOR LIST\n`;
+				const ownerBox =
+`╭━━━〔 👑 OWNER 〕━━━╮
+│ Name : XZ Antu (Madara)
+│ UID  : ${OWNER}
+╰━━━━━━━━━━━━━━━━━━━━╯`;
 
-				msg += getNames.length > 0
-					? getNames.map(i => `• ${i.name} (${i.uid})`).join("\n")
-					: "No operators found.";
+				const operatorsBox =
+`╭━━〔 🛠 OPERATOR LIST 〕━━╮
+${getNames.length > 0
+? getNames.map(i => `│ • ${i.name} (${i.uid})`).join("\n")
+: "│ No Operators Found"}
+╰━━━━━━━━━━━━━━━━━━━━━━╯`;
 
-				return message.reply(msg);
+				return message.reply(ownerBox + "\n\n" + operatorsBox);
 			}
 
 			default:
