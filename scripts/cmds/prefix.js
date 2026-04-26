@@ -5,7 +5,7 @@ const getStreamFromURL = global.utils.getStreamFromURL;
 
 const gifList = [
 	"https://files.catbox.moe/eaqmer.webp",
-   "https://i.ibb.co.com/ZRjQLT40/lv-0-20260122182327-2.gif"
+   "https://files.catbox.moe/eaqmer.webp"
 ];
 
 const getRandomGif = () =>
@@ -15,7 +15,7 @@ module.exports = {
 	config: {
 		name: "prefix",
 		version: "2.2",
-		author: "xalman",
+		author: "Antu",
 		countDown: 5,
 		role: 0,
 		description: "Change & show bot prefix ",
