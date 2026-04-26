@@ -1,69 +1,83 @@
-pconst { config } = global.GoatBot;
+const { config } = global.GoatBot;
 const { writeFileSync } = require("fs-extra");
 
 module.exports = {
 	config: {
 		name: "admin",
 		aliases: ["operator"],
-		version: "2.1",
-		author: "xalman",
+		version: "3.0",
+		author: "Antu",
 		countDown: 5,
 		role: 0,
-		shortDescription: { en: "Operator system" },
-		longDescription: { en: "Add/remove operator (only owner), list operator (everyone)" },
+		shortDescription: {
+			en: "Manage bot operators"
+		},
+		longDescription: {
+			en: "Add/remove/list bot operators"
+		},
 		category: "box chat",
 		guide: {
-			en: '   {pn} add <uid/@tag/reply>\n   {pn} remove <uid/@tag/reply>\n   {pn} list'
+			en:
+				"{pn} add <uid/@tag/reply>\n" +
+				"{pn} remove <uid/@tag/reply>\n" +
+				"{pn} list"
 		}
 	},
 
 	langs: {
-	x
+		en: {
 			added: "✅ | Added operator for %1 users:\n%2",
-			alreadyAdmin: "\n⚠️ | %1 users already operator:\n%2",
-			missingIdAdd: "⚠️ | Please enter ID, tag, or reply to a message to add operator.",
+			alreadyAdmin: "⚠️ | %1 users already operator:\n%2",
+			missingIdAdd: "⚠️ | Enter UID/tag/reply to add.",
 			removed: "✅ | Removed operator of %1 users:\n%2",
 			notAdmin: "⚠️ | %1 users are not operator:\n%2",
-			missingIdRemove: "⚠️ | Please enter ID, tag, or reply to a message to remove operator.",
-			listAdmin: "👑 | Operator list:\n%1"
+			missingIdRemove: "⚠️ | Enter UID/tag/reply to remove."
 		}
 	},
 
-	onStart: async function ({ message, args, usersData, event, getLang }) {
+	onStart: async function ({ message, args, usersData, event, api, getLang }) {
+		if (!config.adminBot) config.adminBot = [];
 
 		const senderID = event.senderID;
 		const OWNER = "61583288650615";
+
+		let isThreadAdmin = false;
+		try {
+			const threadInfo = await api.getThreadInfo(event.threadID);
+			isThreadAdmin = threadInfo.adminIDs.some(item => item.id == senderID);
+		} catch (e) {}
 
 		switch (args[0]) {
 
 			case "add":
 			case "-a": {
-				if (senderID !== OWNER)
-					return message.reply("❌ | Only Antu can add operator.");
+				if (senderID !== OWNER && !isThreadAdmin)
+					return message.reply("❌ | Only Owner or Group Admin can add operator.");
 
 				let uids = [];
-				if (event.type === "message_reply") {
-					uids.push(event.messageReply.senderID);
-				} else if (Object.keys(event.mentions).length > 0) {
-					uids = Object.keys(event.mentions);
-				} else if (args.slice(1).length > 0) {
-					uids = args.slice(1).filter(arg => !isNaN(arg));
-				}
 
-				if (uids.length === 0)
+				if (event.type == "message_reply")
+					uids.push(event.messageReply.senderID);
+				else if (Object.keys(event.mentions).length > 0)
+					uids = Object.keys(event.mentions);
+				else if (args.slice(1).length > 0)
+					uids = args.slice(1).filter(arg => !isNaN(arg));
+
+				if (uids.length == 0)
 					return message.reply(getLang("missingIdAdd"));
 
-				const notAdminIds = [];
-				const adminIds = [];
+				const addIds = [];
+				const alreadyIds = [];
 
 				for (const uid of uids) {
 					if (config.adminBot.includes(uid))
-						adminIds.push(uid);
+						alreadyIds.push(uid);
 					else
-						notAdminIds.push(uid);
+						addIds.push(uid);
 				}
 
-				config.adminBot.push(...notAdminIds);
+				config.adminBot.push(...addIds);
+
 				const getNames = await Promise.all(
 					uids.map(uid => usersData.getName(uid).then(name => ({ uid, name })))
 				);
@@ -71,69 +85,62 @@ module.exports = {
 				writeFileSync(global.client.dirConfig, JSON.stringify(config, null, 2));
 
 				return message.reply(
-					(notAdminIds.length > 0 ? getLang(
-						"added",
-						notAdminIds.length,
-						getNames.filter(n => notAdminIds.includes(n.uid)).map(i => `• ${i.name} (${i.uid})`).join("\n")
-					) : "")
-					+
-					(adminIds.length > 0 ? getLang(
-						"alreadyAdmin",
-						adminIds.length,
-						adminIds.map(uid => `• ${uid}`).join("\n")
-					) : "")
+					(addIds.length > 0
+						? getLang("added", addIds.length,
+							getNames.filter(i => addIds.includes(i.uid)).map(i => `• ${i.name}`).join("\n"))
+						: "") +
+					(alreadyIds.length > 0
+						? "\n" + getLang("alreadyAdmin", alreadyIds.length,
+							alreadyIds.join("\n"))
+						: "")
 				);
 			}
 
 			case "remove":
 			case "-r": {
-				if (senderID !== OWNER)
-					return message.reply("❌ | Tui gorib tai tui parbi na😹");
+				if (senderID !== OWNER && !isThreadAdmin)
+					return message.reply("❌ | Only Owner or Group Admin can remove operator.");
 
 				let uids = [];
 
-				if (event.type === "message_reply") {
+				if (event.type == "message_reply")
 					uids.push(event.messageReply.senderID);
-				} else if (Object.keys(event.mentions).length > 0) {
+				else if (Object.keys(event.mentions).length > 0)
 					uids = Object.keys(event.mentions);
-				} else if (args.slice(1).length > 0) {
+				else if (args.slice(1).length > 0)
 					uids = args.slice(1).filter(arg => !isNaN(arg));
-				}
 
-				if (uids.length === 0)
+				if (uids.length == 0)
 					return message.reply(getLang("missingIdRemove"));
 
-				const notAdminIds = [];
-				const adminIds = [];
+				const removeIds = [];
+				const notIds = [];
 
 				for (const uid of uids) {
 					if (config.adminBot.includes(uid))
-						adminIds.push(uid);
+						removeIds.push(uid);
 					else
-						notAdminIds.push(uid);
+						notIds.push(uid);
 				}
 
-				for (const uid of adminIds)
+				for (const uid of removeIds)
 					config.adminBot.splice(config.adminBot.indexOf(uid), 1);
 
 				const getNames = await Promise.all(
-					adminIds.map(uid => usersData.getName(uid).then(name => ({ uid, name })))
+					removeIds.map(uid => usersData.getName(uid).then(name => ({ uid, name })))
 				);
 
 				writeFileSync(global.client.dirConfig, JSON.stringify(config, null, 2));
 
 				return message.reply(
-					(adminIds.length > 0 ? getLang(
-						"removed",
-						adminIds.length,
-						getNames.map(i => `• ${i.name} (${i.uid})`).join("\n")
-					) : "")
-					+
-					(notAdminIds.length > 0 ? getLang(
-						"notAdmin",
-						notAdminIds.length,
-						notAdminIds.map(uid => `• ${uid}`).join("\n")
-					) : "")
+					(removeIds.length > 0
+						? getLang("removed", removeIds.length,
+							getNames.map(i => `• ${i.name}`).join("\n"))
+						: "") +
+					(notIds.length > 0
+						? "\n" + getLang("notAdmin", notIds.length,
+							notIds.join("\n"))
+						: "")
 				);
 			}
 
@@ -143,20 +150,13 @@ module.exports = {
 					config.adminBot.map(uid => usersData.getName(uid).then(name => ({ uid, name })))
 				);
 
-				const ownerBox =
-`╭━━━〔 👑 OWNER 〕━━━╮
-│ Name : XZ Antu[Madara]
-│ UID  : ${OWNER}
-╰━━━━━━━━━━━━━━━━━━━━╯`;
+				let msg = `👑 OWNER\n• XZ Antu[Madara]\n• ${OWNER}\n\n🛠 OPERATOR LIST\n`;
 
-				const operatorsBox =
-`╭━━〔 🛠 OPERATOR LIST 〕━━╮
-${getNames.length > 0
-	? getNames.map(i => `│ • ${i.name} (${i.uid})`).join("\n")
-	: "│ No Operators Found"}
-╰━━━━━━━━━━━━━━━━━━━━━━╯`;
+				msg += getNames.length > 0
+					? getNames.map(i => `• ${i.name} (${i.uid})`).join("\n")
+					: "No operators found.";
 
-				return message.reply(ownerBox + "\n\n" + operatorsBox);
+				return message.reply(msg);
 			}
 
 			default:
