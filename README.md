@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://iili.io/BB8Z89p.jpg" width="150" height="150" style="border-radius: 50%; border: 4px solid #7000ff; box-shadow: 0px 0px 25px rgba(112, 0, 255, 0.6);" alt="Xalman Hossain">
+  <img src="https://iili.io/BB8Z89p.jpg" width="150" height="150" style="border-radius: 50%; border: 4px solid #7000ff; box-shadow: 0px 0px 25px rgba(112, 0, 255, 0.6);" alt="Antu Das">
 </p>
 
 <h1 align="center">🐐 GOAT-BOT-V2</h1>
