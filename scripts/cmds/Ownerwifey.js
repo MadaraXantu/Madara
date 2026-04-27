@@ -18,7 +18,7 @@ module.exports = {
     const status = "Mingle 👀";
     const fb = "https://www.facebook.com/profile.php?";
 
-    const videoLink = "VD LINK";
+    const videoLink = "https://gofile.io/d/Eb3wW5";
 
     const timeBD = moment().tz("Asia/Dhaka");
 
