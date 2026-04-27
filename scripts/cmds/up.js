@@ -99,7 +99,7 @@ module.exports = {
       ctx.font = 'italic 20px Arial';
       ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
       ctx.textAlign = 'center';
-      ctx.fillText('Powered by Xalman', width / 2, 580);
+      ctx.fillText('Powered by Antu', width / 2, 580);
 
       const cachePath = path.join(__dirname, 'cache', `up_fast.png`);
       fs.ensureDirSync(path.join(__dirname, 'cache'));
