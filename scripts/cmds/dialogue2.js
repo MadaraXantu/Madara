@@ -1,17 +1,11 @@
 const axios = require("axios");
-
-module.exports = { config: { name: "dialogue2", version: "1.0", 
-
+module.exports = { 
+config: { name: "dialogue2", version: "1.0", 
 author: "Antu", 
-
 category: "anime", 
-
 guide: "{p}dialogue2 naruto" },
-
 onStart: async function ({ message, args }) {
-
 const name = args.join(" ").toLowerCase();
-
 if (!name) {
   return message.reply("❌ Use: /dialogue2 naruto");
 }
