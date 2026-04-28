@@ -69,7 +69,7 @@ module.exports = {
         `📝 𝗧𝗶𝘁𝗹𝗲: ${title.slice(0, 60)}${title.length > 60 ? "..." : ""}\n` +
         `🌐 𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺: ${platform.toUpperCase()}\n` +
         `⏱️ 𝗧𝗶𝗺𝗲: ${time}s\n` +
-        `👨‍💻 Admin: Antu\n` +
+        `👨‍💻 Dev: Antu\n` +
         `━━━━━━━━━━━━━━━━━━`;
 
       await message.reply({
