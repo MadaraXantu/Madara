@@ -6,7 +6,7 @@ module.exports = {
 		name: "admin",
 		aliases: ["operator"],
 		version: "4.0",
-		author: "Antu",
+		author: "Xalman",
 		countDown: 5,
 		role: 0,
 		shortDescription: { en: "Manage bot operators" },
@@ -35,7 +35,7 @@ module.exports = {
 		if (!config.adminBot) config.adminBot = [];
 
 		const senderID = event.senderID;
-		const OWNER = "61570641868681";
+		const OWNER = "61583288650615";
 
 		let isThreadAdmin = false;
 		try {
