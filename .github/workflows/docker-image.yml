@@ -1,4 +1,3 @@
-
 name: Build (20.x)
 
 on:
@@ -28,4 +27,4 @@ jobs:
           FB_EMAIL: ${{ secrets.FB_EMAIL }}
           FB_PASSWORD: ${{ secrets.FB_PASSWORD }}
           FB_COOKIE: ${{ secrets.FB_COOKIE }}
-        run: node index
+        run: node index.js
